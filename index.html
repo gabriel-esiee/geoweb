@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lan="en">
+	<head>
+		<title>Test</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+			integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+			crossorigin=""/>
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+			crossorigin="">
+        </script>
+        <script type="text/javascript" src='leaflet.mask.js'></script>
+        <script type="text/javascript" src='events.js'></script>
+        <style>
+            #map {
+                width: 100%;
+                z-index: 0;
+            }
+        </style>
+	</head>
+	<body>
+      <figure class="image is-16by9">
+		   <div class="has-ratio" id="map"></div>
+      </figure>
+      <div class="modal" id="modal">
+         <div class="modal-background" id="modal-bg"></div>
+         <div class="modal-card">
+            <header class="modal-card-head">
+               <p class="modal-card-title"></p>
+            </header>
+            <section class="modal-card-body">
+               <h3 class="title" id="modal-title">Title of the event</h3>
+               <p class="subtitle" id="modal-date">1900</p>
+               <img class="image is-5by3 pb-4" id="modal-img" src="https://bulma.io/assets/images/placeholders/800x480.png" alt="Event's illustration">
+               <p id="modal-desc">Description of the event here...</p>
+            </section>
+            <footer class="modal-card-foot">
+               <button class="button is-fullwidth is-danger is-light" id="modal-close">Quitter</button>
+            </footer>
+         </div>
+      </div>
+
+		<script>
+
+            // Modal management.
+
+            function openModal() {
+                document.getElementById('modal').classList.add('is-active');
+            }
+
+            function closeModal() {
+                document.getElementById('modal').classList.remove('is-active');
+            }
+
+            document.getElementById('modal-close').addEventListener('click', function(e){
+                closeModal();
+            });
+
+            document.getElementById('modal-bg').addEventListener('click', function(e){
+                closeModal();
+            });
+
+            // Leaflet map.
+
+            var map = L.map("map", {
+                center: [45, 4],
+                zoom: 8
+            });
+
+            const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+
+            const mask = L.mask('https://france-geojson.gregoiredavid.fr/repo/regions/auvergne-rhone-alpes/region-auvergne-rhone-alpes.geojson', {
+                restrictBounds: false,
+                weight: 0,
+                fillColor: 'black',
+                fillOpacity: 0.75
+            }).addTo(map);
+
+            events.forEach(event => {
+               var marker = L.marker(event['coordinates'], {
+                  title: event['title']
+               }).addTo(map);
+
+               marker.attached_event = event;
+
+               marker.on('click', function(e) {
+                  document.getElementById('modal-title').textContent = e.target.attached_event['title'];
+                  document.getElementById('modal-img').setAttribute('src', e.target.attached_event['image']);
+                  document.getElementById('modal-date').textContent = e.target.attached_event['date'];
+                  document.getElementById('modal-desc').textContent = e.target.attached_event['description'];
+                  openModal();
+               });
+            });
+		</script>
+	</body>
+</html>
