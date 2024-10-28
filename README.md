@@ -1,3 +1,3 @@
 # Tâches
 
-- Afficher un icône approprié en fonction du type.
+- Factoriser le code en plusieurs fichiers Javascript.

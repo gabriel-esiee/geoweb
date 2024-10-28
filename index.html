@@ -17,39 +17,44 @@
         <div class="modal" id="modal">
             <div class="background" id="modal-bg"></div>
             <div class="card">
-                <header>
-                    <p class="title"></p>
-                </header>
-                <section>
-                    <h3 class="title" id="modal-title">Title of the event</h3>
-                    <p class="subtitle" id="modal-date">1900</p>
-                    <img class="image is-5by3 pb-4" id="modal-img" src="https://bulma.io/assets/images/placeholders/800x480.png" alt="The image is loading...">
-                    <p id="modal-desc">Description of the event here...</p>
-                </section>
-                <footer>
-                <button class="close" id="modal-close">Quitter</button>
-                </footer>
+                <div class="grid">
+                    <img src="" alt="" id="modal-img">
+                    <div class="modal-content">
+                        <h3 class="title" id="modal-title">Title of the event</h3>
+                        <p class="subtitle" id="modal-date">1900</p>
+                        <p id="modal-desc">Description of the event here...</p>
+                        <button class="close" id="modal-close">Quitter</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <form class="settings">
             <div class="grid">
-                <input id="slider_one" type="range" value="500" min="0" max="2024"/>
-                <input id="slider_two" type="range" value="1900" min="0" max="2024"/>
+                <div class="date-range">
+                    <input id="slider_one" type="range" value="500" min="0" max="2024"/>
+                    <input id="slider_two" type="range" value="1900" min="0" max="2024"/>
+                </div>
                 <div class="type-section">
                     <label>
                         <input type="checkbox" id="building-checkbox" checked value="building">
                         Building
                     </label>
                     <label>
-                        <input type="checkbox" id="battles-checkbox" checked value="battles">
-                        Battles
+                        <input type="checkbox" id="battle-checkbox" checked value="battle">
+                        Battle
+                    </label>
+                    <label>
+                        <input type="checkbox" id="treaty-checkbox" checked value="treaty">
+                        Treaty
+                    </label>
+                    <label>
+                        <input type="checkbox" id="other-checkbox" checked value="other">
+                        Other
                     </label>
                 </div>
             </div>
         </form>
-
-        <script type="text/javascript" src="range_slider.js"></script>
 
 		<script>
 
@@ -99,10 +104,14 @@
             let selected_types = [];
 
             const building_checkbox = document.getElementById("building-checkbox");
-            const battles_checkbox = document.getElementById("battles-checkbox");
+            const battle_checkbox = document.getElementById("battle-checkbox");
+            const treaty_checkbox = document.getElementById("treaty-checkbox");
+            const other_checkbox = document.getElementById("other-checkbox");
 
             building_checkbox.addEventListener('change', update_selected_types);
-            battles_checkbox.addEventListener('change', update_selected_types);
+            battle_checkbox.addEventListener('change', update_selected_types);
+            treaty_checkbox.addEventListener('change', update_selected_types);
+            other_checkbox.addEventListener('change', update_selected_types);
 
             function update_selected_types() {
                 selected_types = [];
@@ -111,8 +120,16 @@
                     selected_types.push('building');
                 }
 
-                if(battles_checkbox.checked) {
+                if(battle_checkbox.checked) {
                     selected_types.push('battle');
+                }
+
+                if(treaty_checkbox.checked) {
+                    selected_types.push('treaty');
+                }
+
+                if(other_checkbox.checked) {
+                    selected_types.push('other');
                 }
 
                 update_markers();
@@ -125,6 +142,12 @@
                 zoom: 8
             });
 
+            map.on('click', function(e) {
+                const lat = e.latlng.lat.toFixed(5);
+                const lng = e.latlng.lng.toFixed(5);
+                console.log(`Coordinates: ${lat}, ${lng}`);
+            });
+
             const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
                 subdomains: 'abcd',
@@ -135,8 +158,47 @@
                 restrictBounds: false,
                 weight: 0,
                 fillColor: 'black',
-                fillOpacity: 0.75
+                fillOpacity: 0.55
             }).addTo(map);
+
+            const default_icon = L.icon({
+                iconUrl: 'assets/png/information.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                popupAnchor: [16, 16]
+            });
+
+            const building_icon = L.icon({
+                iconUrl: 'assets/png/building.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                popupAnchor: [16, 16]
+            });
+
+            const battle_icon = L.icon({
+                iconUrl: 'assets/png/battle.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                popupAnchor: [16, 16]
+            });
+
+            const treaty_icon = L.icon({
+                iconUrl: 'assets/png/treaty.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                popupAnchor: [16, 16]
+            });
+
+            function get_type_icon(type) {
+                if(type == 'building')
+                    return building_icon;
+                else if(type == 'battle')
+                    return battle_icon
+                else if(type == 'treaty')
+                    return treaty_icon
+                else
+                    return default_icon
+            }
 
             let markersLayer = L.layerGroup().addTo(map);
             let markersList = []
@@ -146,7 +208,8 @@
                     const event = events[i];
                     
                     var marker = L.marker(event['coordinates'], {
-                        title: event['title']
+                        title: event['title'],
+                        icon: get_type_icon(event['type'])
                     })
 
                     marker.attached_event_id = i;
