@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lan="en">
 	<head>
-		<title>Test</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-			integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-			crossorigin=""/>
-		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-			crossorigin="">
-        </script>
+		<title>Semestral project</title>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
         <script type="text/javascript" src='leaflet.mask.js'></script>
         <script type="text/javascript" src='events.js'></script>
-        <style>
-            #map {
-                width: 100%;
-                z-index: 0;
-            }
-        </style>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-      <figure class="image is-16by9">
-		   <div class="has-ratio" id="map"></div>
-      </figure>
-      <div class="modal" id="modal">
-         <div class="modal-background" id="modal-bg"></div>
-         <div class="modal-card">
-            <header class="modal-card-head">
-               <p class="modal-card-title"></p>
-            </header>
-            <section class="modal-card-body">
-               <h3 class="title" id="modal-title">Title of the event</h3>
-               <p class="subtitle" id="modal-date">1900</p>
-               <img class="image is-5by3 pb-4" id="modal-img" src="https://bulma.io/assets/images/placeholders/800x480.png" alt="Event's illustration">
-               <p id="modal-desc">Description of the event here...</p>
-            </section>
-            <footer class="modal-card-foot">
-               <button class="button is-fullwidth is-danger is-light" id="modal-close">Quitter</button>
-            </footer>
-         </div>
-      </div>
+
+        <div id="map"></div>
+
+        <div class="modal" id="modal">
+            <div class="background" id="modal-bg"></div>
+            <div class="card">
+                <header>
+                    <p class="title"></p>
+                </header>
+                <section>
+                    <h3 class="title" id="modal-title">Title of the event</h3>
+                    <p class="subtitle" id="modal-date">1900</p>
+                    <img class="image is-5by3 pb-4" id="modal-img" src="https://bulma.io/assets/images/placeholders/800x480.png" alt="The image is loading...">
+                    <p id="modal-desc">Description of the event here...</p>
+                </section>
+                <footer>
+                <button class="close" id="modal-close">Quitter</button>
+                </footer>
+            </div>
+        </div>
+
+        <form class="settings">
+            <div class="grid">
+                <input id="slider_one" type="range" value="500" min="0" max="2024"/>
+                <input id="slider_two" type="range" value="1900" min="0" max="2024"/>
+                <div class="type-section">
+                    <label>
+                        <input type="checkbox" id="building-checkbox" checked value="building">
+                        Building
+                    </label>
+                    <label>
+                        <input type="checkbox" id="battles-checkbox" checked value="battles">
+                        Battles
+                    </label>
+                </div>
+            </div>
+        </form>
+
+        <script type="text/javascript" src="range_slider.js"></script>
 
 		<script>
 
-            // Modal management.
+            // Modal.
 
             function openModal() {
-                document.getElementById('modal').classList.add('is-active');
+                document.getElementById('modal').classList.add('active');
             }
 
             function closeModal() {
-                document.getElementById('modal').classList.remove('is-active');
+                document.getElementById('modal').classList.remove('active');
             }
 
             document.getElementById('modal-close').addEventListener('click', function(e){
@@ -61,9 +71,56 @@
                 closeModal();
             });
 
+            // Range slider.
+
+            const slider_one = document.getElementById('slider_one');
+            const slider_two = document.getElementById('slider_two');
+
+            var min = slider_one.value;
+            var max = slider_two.value;
+
+            slider_one.addEventListener('input', function() {
+                update_min_max_values(slider_one.value, slider_two.value);
+            });
+
+            slider_two.addEventListener('input', function() {
+                update_min_max_values(slider_one.value, slider_two.value);
+            });
+
+            function update_min_max_values(slider_one_value, slider_two_value) {
+                min = Math.min(slider_one_value, slider_two_value);
+                max = Math.max(slider_one_value, slider_two_value);
+
+                update_markers();
+            }
+
+            // Type from selection.
+
+            let selected_types = [];
+
+            const building_checkbox = document.getElementById("building-checkbox");
+            const battles_checkbox = document.getElementById("battles-checkbox");
+
+            building_checkbox.addEventListener('change', update_selected_types);
+            battles_checkbox.addEventListener('change', update_selected_types);
+
+            function update_selected_types() {
+                selected_types = [];
+
+                if(building_checkbox.checked) {
+                    selected_types.push('building');
+                }
+
+                if(battles_checkbox.checked) {
+                    selected_types.push('battle');
+                }
+
+                update_markers();
+            }
+
             // Leaflet map.
 
-            var map = L.map("map", {
+            let map = L.map("map", {
                 center: [45, 4],
                 zoom: 8
             });
@@ -81,21 +138,61 @@
                 fillOpacity: 0.75
             }).addTo(map);
 
-            events.forEach(event => {
-               var marker = L.marker(event['coordinates'], {
-                  title: event['title']
-               }).addTo(map);
+            let markersLayer = L.layerGroup().addTo(map);
+            let markersList = []
 
-               marker.attached_event = event;
+            function initialize_markers() {
+                for (let i = 0; i < events.length; i++) {
+                    const event = events[i];
+                    
+                    var marker = L.marker(event['coordinates'], {
+                        title: event['title']
+                    })
 
-               marker.on('click', function(e) {
-                  document.getElementById('modal-title').textContent = e.target.attached_event['title'];
-                  document.getElementById('modal-img').setAttribute('src', e.target.attached_event['image']);
-                  document.getElementById('modal-date').textContent = e.target.attached_event['date'];
-                  document.getElementById('modal-desc').textContent = e.target.attached_event['description'];
-                  openModal();
-               });
-            });
+                    marker.attached_event_id = i;
+
+                    marker.on('click', function(e) {
+                        const attached_event = events[e.target.attached_event_id];
+
+                        document.getElementById('modal-title').textContent = attached_event['title'];
+                        document.getElementById('modal-img').setAttribute('src', attached_event['image']);
+                        document.getElementById('modal-date').textContent = attached_event['date'];
+                        document.getElementById('modal-desc').textContent = attached_event['description'];
+
+                        openModal();
+                    });
+
+                    markersList.push(marker);
+                }
+            }
+            
+            function should_draw_event(event) {
+                // An event should be included if its date is included in range slider 
+                // and if its type is selected.
+                if(event['date'] >= min && event['date'] <= max) {
+                    if(selected_types.includes(event['type']) == true) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function update_markers() {
+                markersLayer.clearLayers();
+
+                markersList.forEach(marker => {
+                    const attached_event = events[marker.attached_event_id];
+                    
+                    if(should_draw_event(attached_event) == true) {
+                        markersLayer.addLayer(marker);
+                    }
+                });
+            }
+
+            initialize_markers();
+            update_min_max_values(slider_one.value, slider_two.value);
+            update_selected_types();
+
 		</script>
 	</body>
 </html>
