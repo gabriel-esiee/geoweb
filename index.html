@@ -7,6 +7,9 @@
         <script type="text/javascript" src='leaflet.mask.js'></script>
         <script type="text/javascript" src='events.js'></script>
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
         <link rel="stylesheet" href="style.css">
 	</head>
@@ -20,8 +23,8 @@
                 <div class="grid">
                     <img src="" alt="" id="modal-img">
                     <div class="modal-content">
-                        <h3 class="title" id="modal-title">Title of the event</h3>
-                        <p class="subtitle" id="modal-date">1900</p>
+                        <h2 class="title" id="modal-title">Title of the event</h2>
+                        <h3 class="subtitle" id="modal-date">1900</h3>
                         <p id="modal-desc">Description of the event here...</p>
                         <button class="close" id="modal-close">Quitter</button>
                     </div>
@@ -31,11 +34,13 @@
 
         <form class="settings">
             <div class="grid">
+                <h2 class="date-title">Filter event by date (<span id="min-date-text"></span>-<span id="max-date-text"></span>)</h2>
+                <h2 class="type-title">Filter event by type (<span id="type-text"></span>)</h2>
                 <div class="date-range">
-                    <input id="slider_one" type="range" value="500" min="0" max="2024"/>
-                    <input id="slider_two" type="range" value="1900" min="0" max="2024"/>
+                    <input id="slider_one" type="range" value="1800" min="1000" max="2024"/>
+                    <input id="slider_two" type="range" value="2000" min="1000" max="2024"/>
                 </div>
-                <div class="type-section">
+                <div class="type-selection">
                     <label>
                         <input type="checkbox" id="building-checkbox" checked value="building">
                         Building
@@ -80,6 +85,8 @@
 
             const slider_one = document.getElementById('slider_one');
             const slider_two = document.getElementById('slider_two');
+            const min_text_span = document.getElementById('min-date-text');
+            const max_text_span = document.getElementById('max-date-text');
 
             var min = slider_one.value;
             var max = slider_two.value;
@@ -95,6 +102,9 @@
             function update_min_max_values(slider_one_value, slider_two_value) {
                 min = Math.min(slider_one_value, slider_two_value);
                 max = Math.max(slider_one_value, slider_two_value);
+                
+                min_text_span.textContent = min;
+                max_text_span.textContent = max;
 
                 update_markers();
             }
@@ -107,6 +117,7 @@
             const battle_checkbox = document.getElementById("battle-checkbox");
             const treaty_checkbox = document.getElementById("treaty-checkbox");
             const other_checkbox = document.getElementById("other-checkbox");
+            const type_text_span = document.getElementById("type-text")
 
             building_checkbox.addEventListener('change', update_selected_types);
             battle_checkbox.addEventListener('change', update_selected_types);
@@ -115,22 +126,29 @@
 
             function update_selected_types() {
                 selected_types = [];
+                count = 0;
 
                 if(building_checkbox.checked) {
                     selected_types.push('building');
+                    count++;
                 }
 
                 if(battle_checkbox.checked) {
                     selected_types.push('battle');
+                    count++;
                 }
 
                 if(treaty_checkbox.checked) {
                     selected_types.push('treaty');
+                    count++;
                 }
 
                 if(other_checkbox.checked) {
                     selected_types.push('other');
+                    count++;
                 }
+
+                type_text_span.textContent = count;
 
                 update_markers();
             }
