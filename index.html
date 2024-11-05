@@ -5,7 +5,6 @@
 
         <script type="text/javascript" src="scripts/leaflet.js"></script>
         <script type="text/javascript" src='scripts/leaflet.mask.js'></script>
-        <script type="text/javascript" src='events.js'></script>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap">
 		<link rel="stylesheet" href="style/leaflet.css"/>
@@ -58,100 +57,11 @@
             </div>
         </form>
 
+        <script type='text/javascript' src='scripts/event_card.js'></script>
+        <script type='text/javascript' src='scripts/range_slider.js'></script>
+        <script type='text/javascript' src='scripts/type_filter.js'></script>
+
 		<script>
-
-            // Modal.
-
-            function openModal() {
-                document.getElementById('modal').classList.add('active');
-            }
-
-            function closeModal() {
-                document.getElementById('modal').classList.remove('active');
-            }
-
-            document.getElementById('modal-close').addEventListener('click', function(e){
-                closeModal();
-            });
-
-            document.getElementById('modal-bg').addEventListener('click', function(e){
-                closeModal();
-            });
-
-            // Range slider.
-
-            const slider_one = document.getElementById('slider_one');
-            const slider_two = document.getElementById('slider_two');
-            const min_text_span = document.getElementById('min-date-text');
-            const max_text_span = document.getElementById('max-date-text');
-
-            var min = slider_one.value;
-            var max = slider_two.value;
-
-            slider_one.addEventListener('input', function() {
-                update_min_max_values(slider_one.value, slider_two.value);
-            });
-
-            slider_two.addEventListener('input', function() {
-                update_min_max_values(slider_one.value, slider_two.value);
-            });
-
-            function update_min_max_values(slider_one_value, slider_two_value) {
-                min = Math.min(slider_one_value, slider_two_value);
-                max = Math.max(slider_one_value, slider_two_value);
-                
-                min_text_span.textContent = min;
-                max_text_span.textContent = max;
-
-                update_markers();
-            }
-
-            // Type from selection.
-
-            let selected_types = [];
-
-            const building_checkbox = document.getElementById("building-checkbox");
-            const battle_checkbox = document.getElementById("battle-checkbox");
-            const treaty_checkbox = document.getElementById("treaty-checkbox");
-            const other_checkbox = document.getElementById("other-checkbox");
-            const type_text_span = document.getElementById("type-text")
-
-            building_checkbox.addEventListener('change', update_selected_types);
-            battle_checkbox.addEventListener('change', update_selected_types);
-            treaty_checkbox.addEventListener('change', update_selected_types);
-            other_checkbox.addEventListener('change', update_selected_types);
-
-            function update_selected_types() {
-                selected_types = [];
-                count = 0;
-
-                if(building_checkbox.checked) {
-                    selected_types.push('building');
-                    count++;
-                }
-
-                if(battle_checkbox.checked) {
-                    selected_types.push('battle');
-                    count++;
-                }
-
-                if(treaty_checkbox.checked) {
-                    selected_types.push('treaty');
-                    count++;
-                }
-
-                if(other_checkbox.checked) {
-                    selected_types.push('other');
-                    count++;
-                }
-
-                type_text_span.textContent = count;
-
-                update_markers();
-            }
-
-            // Leaflet map.
-
             let map = L.map("map", {
                 center: [45, 4],
                 zoom: 8
@@ -215,21 +125,25 @@
                     return default_icon
             }
 
+            let events = []
+
             let markersLayer = L.layerGroup().addTo(map);
-            let markersList = []
+            let featuresList = []
 
             function initialize_markers() {
                 for (let i = 0; i < events.length; i++) {
                     const event = events[i];
                     
-                    var marker = L.marker(event['coordinates'], {
+                    /*var marker = L.marker(event['coordinates'], {
                         title: event['title'],
                         icon: get_type_icon(event['type'])
-                    })
+                    })*/
+                    console.log(event['features']);
+                    var feature = L.geoJSON(event['features']);
 
-                    marker.attached_event_id = i;
+                    feature.attached_event_id = i;
 
-                    marker.on('click', function(e) {
+                    feature.on('click', function(e) {
                         const attached_event = events[e.target.attached_event_id];
 
                         document.getElementById('modal-title').textContent = attached_event['title'];
@@ -240,14 +154,14 @@
                         openModal();
                     });
 
-                    markersList.push(marker);
+                    featuresList.push(feature);
                 }
             }
             
             function should_draw_event(event) {
                 // An event should be included if its date is included in range slider 
                 // and if its type is selected.
-                if(event['date'] >= min && event['date'] <= max) {
+                if(event['date'] >= slider_min_value && event['date'] <= slider_max_value) {
                     if(selected_types.includes(event['type']) == true) {
                         return true;
                     }
@@ -258,18 +172,32 @@
             function update_markers() {
                 markersLayer.clearLayers();
 
-                markersList.forEach(marker => {
-                    const attached_event = events[marker.attached_event_id];
+                featuresList.forEach(feature => {
+                    const attached_event = events[feature.attached_event_id];
                     
                     if(should_draw_event(attached_event) == true) {
-                        markersLayer.addLayer(marker);
+                        markersLayer.addLayer(feature);
                     }
                 });
             }
 
-            initialize_markers();
-            update_min_max_values(slider_one.value, slider_two.value);
-            update_selected_types();
+            fetch('https://raw.githubusercontent.com/gabriel-esiee/geoweb/refs/heads/main/docs/database.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error while fetching database.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                events = data;
+
+                initialize_markers();
+                update_min_max_values(slider_one.value, slider_two.value);
+                update_selected_types();
+            })
+            .catch(error => {
+                console.error("Error while fetching database :", error);
+            });
 
 		</script>
 	</body>
