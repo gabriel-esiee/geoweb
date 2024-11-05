@@ -3,7 +3,7 @@
       "title": "Construction de la basilique Notre-Dame de Fourvière",
       "date": 1884,
       "tag": "building",
-      "type": "point",
+      "type": "polygon",
       "coordinates": [
         [
           4.47551163699859,
