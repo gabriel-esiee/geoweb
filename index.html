@@ -59,7 +59,7 @@
 
         <script type='text/javascript' src='scripts/event_card.js'></script>
         <script type='text/javascript' src='scripts/range_slider.js'></script>
-        <script type='text/javascript' src='scripts/type_filter.js'></script>
+        <script type='text/javascript' src='scripts/tag_filter.js'></script>
 
 		<script>
             let map = L.map("map", {
@@ -135,6 +135,8 @@
 
                     const event = events[i];
                     var feature = null;
+
+                    console.log(event['type']);
 
                     if(event['type'] == 'point') {
                         feature = L.marker(event['coordinates'], {
