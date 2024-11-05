@@ -31,7 +31,7 @@
         <form class="settings">
             <div class="grid">
                 <h2 class="date-title">Filter event by date (<span id="min-date-text"></span>-<span id="max-date-text"></span>)</h2>
-                <h2 class="type-title">Filter event by type (<span id="type-text"></span>)</h2>
+                <h2 class="type-title">Filter event by type (<span id="tag-text"></span>)</h2>
                 <div class="date-range">
                     <input id="slider_one" type="range" value="1800" min="1000" max="2024"/>
                     <input id="slider_two" type="range" value="2000" min="1000" max="2024"/>
@@ -114,12 +114,12 @@
                 popupAnchor: [16, 16]
             });
 
-            function get_type_icon(type) {
-                if(type == 'building')
+            function get_tag_icon(tag) {
+                if(tag == 'building')
                     return building_icon;
-                else if(type == 'battle')
+                else if(tag == 'battle')
                     return battle_icon
-                else if(type == 'treaty')
+                else if(tag == 'treaty')
                     return treaty_icon
                 else
                     return default_icon
@@ -139,14 +139,14 @@
                     if(event['type'] == 'point') {
                         feature = L.marker(event['coordinates'], {
                             title: event['title'],
-                            icon: get_type_icon(event['type'])
+                            icon: get_tag_icon(event['tag'])
                         })
                     } else if(event['type'] == 'line') {
 
                     } else if(event['type'] == 'polygon') {
                         feature = L.polygon(event['coordinates'], {
                             title: event['title'],
-                            fillColor: '#3388ff'
+                            fillColor: '#000000'
                         })
                     }
                     
@@ -169,9 +169,9 @@
             
             function should_draw_event(event) {
                 // An event should be included if its date is included in range slider 
-                // and if its type is selected.
+                // and if its tag is selected.
                 if(event['date'] >= slider_min_value && event['date'] <= slider_max_value) {
-                    if(selected_types.includes(event['type']) == true) {
+                    if(selected_tags.includes(event['tag']) == true) {
                         return true;
                     }
                 }
@@ -202,7 +202,7 @@
 
                 initialize_markers();
                 update_min_max_values(slider_one.value, slider_two.value);
-                update_selected_types();
+                update_selected_tags();
             })
             .catch(error => {
                 console.error("Error while fetching database :", error);
