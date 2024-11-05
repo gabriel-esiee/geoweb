@@ -3,29 +3,8 @@
       "title": "Construction de la basilique Notre-Dame de Fourvière",
       "date": 1884,
       "tag": "building",
-      "type": "polygon",
-      "coordinates": [
-        [
-          45.88029384922129,
-          4.47551163699859
-        ],
-        [
-          45.98611667416171,
-          4.707119001858018
-        ],
-        [
-          46.06314289495549,
-          4.475574146694413
-        ],
-        [
-          46.02279851279525,
-          4.39989182106936
-        ],
-        [
-          45.88029384922129,
-          4.47551163699859
-        ]
-      ],
+      "type": "point",
+      "coordinates": [ 45.76233478232618, 4.822082798016055 ],
       "description": "Érigée sur la colline de Fourvière à Lyon, la basilique Notre-Dame de Fourvière est un emblème architectural majeur de la ville. Construite après la guerre franco-prussienne, elle est un symbole de dévotion religieuse et de résistance nationale. Avec son style néo-byzantin, elle surplombe Lyon et attire des milliers de visiteurs chaque année. Elle symbolise également la montée en puissance de l'Église catholique en France à cette époque.",
       "image": "https://www.visitelyon.fr/wp-content/uploads/2020/10/basilique-notre-dame-de-fourviere-4.jpeg"
     },
@@ -81,7 +60,7 @@
       "type": "point",
       "coordinates": [ 45.754727518783966, 4.8794254445667775 ],
       "description": "The Canut revolts (French: Révolte des canuts) is the collective name for the major revolts by Lyonnais silk workers (French: canuts) which occurred in 1831, 1834 and 1848. They were among the first well-defined worker uprisings of the period known as the Industrial Revolution. The First Canut revolt in 1831 was provoked by a bad economy and a resultant drop in silk prices, which caused a drop in workers' wages. In an effort to maintain their standard of living, the workers tried to see a minimum price imposed on silk.",
-      "image": ""
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/R%C3%A9volte_de_canuts_%C3%A0_Lyon_en_1834.jpg/1280px-R%C3%A9volte_de_canuts_%C3%A0_Lyon_en_1834.jpg"
     },
     {
       "title": "The Lumière brothers invent cinema",
@@ -90,7 +69,7 @@
       "type": "point",
       "coordinates": [ 45.741208343367475, 4.833636842794306 ],
       "description": "The Lumière brothers, Auguste Marie Louis Nicolas Lumière (19 October 1862 – 10 April 1954) and Louis Jean Lumière (5 October 1864 – 6 June 1948),[1][2] were French manufacturers of photography equipment, best known for their Cinématographe motion picture system and the short films they produced between 1895 and 1905, which places them among the earliest filmmakers. Their screening of a single film on 22 March 1895 for around 200 members of the Société d'encouragement pour l'industrie nationale (Society for the Development of the National Industry) in Paris was probably the first presentation of projected film. Their first commercial public screening on 28 December 1895 for around 40 paying visitors and invited relations has traditionally been regarded as the birth of cinema. Either the techniques or the business models of earlier filmmakers proved to be less viable than the breakthrough presentations of the Lumières.",
-      "image": ""
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Fratelli_Lumiere.jpg"
     },
     {
       "title": "Winter Olympics",
@@ -144,6 +123,6 @@
         [46.14023093965298, 6.023225127496602]
       ],
       "description": "Après la défaite de la France en juin 1940, les Allemands, vainqueurs, ont occupé militairement la partie nord de la France puis, à partir de novembre 1942, la totalité du territoire français.",
-      "image": ""
+      "image": "https://cache.larvf.com/data/photo/w1000_ci/6j/les-grands-vins-franc-ais-fascinent-l-occupant-allemand-pour-preuve-ces-officiers-de-la-wehrmach.jpg"
     }
 ]
