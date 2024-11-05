@@ -136,8 +136,6 @@
                     const event = events[i];
                     var feature = null;
 
-                    console.log(event['type']);
-
                     if(event['type'] == 'point') {
                         feature = L.marker(event['coordinates'], {
                             title: event['title'],
@@ -148,7 +146,8 @@
                     } else if(event['type'] == 'polygon') {
                         feature = L.polygon(event['coordinates'], {
                             title: event['title'],
-                            fillColor: '#000000'
+                            fillColor: '#000000',
+                            color: '#000000'
                         })
                     }
                     
