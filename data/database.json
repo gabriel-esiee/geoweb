@@ -3,158 +3,48 @@
       "title": "Construction de la basilique Notre-Dame de Fourvière",
       "date": 1884,
       "type": "building",
+      "coordinates": [45.762541, 4.818374],
       "description": "Érigée sur la colline de Fourvière à Lyon, la basilique Notre-Dame de Fourvière est un emblème architectural majeur de la ville. Construite après la guerre franco-prussienne, elle est un symbole de dévotion religieuse et de résistance nationale. Avec son style néo-byzantin, elle surplombe Lyon et attire des milliers de visiteurs chaque année. Elle symbolise également la montée en puissance de l'Église catholique en France à cette époque.",
-      "image": "https://www.visitelyon.fr/wp-content/uploads/2020/10/basilique-notre-dame-de-fourviere-4.jpeg",
-      "features": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "coordinates": [
-                [
-                  [
-                    4.485250101946491,
-                    46.06582983525138
-                  ],
-                  [
-                    6.32071324500896,
-                    45.848391081669575
-                  ],
-                  [
-                    6.236723915153419,
-                    46.502757821268204
-                  ],
-                  [
-                    5.064615243036627,
-                    46.63911063957809
-                  ],
-                  [
-                    4.485250101946491,
-                    46.06582983525138
-                  ]
-                ]
-              ],
-              "type": "Polygon"
-            }
-          }
-        ]
-      }
+      "image": "https://www.visitelyon.fr/wp-content/uploads/2020/10/basilique-notre-dame-de-fourviere-4.jpeg"
     },
     {
       "title": "Plateau de Glières",
       "date": 1944,
       "type": "battle",
+      "coordinates": [45.9445, 6.4473],
       "description": "En 1944, le plateau des Glières est devenu un lieu emblématique de la résistance française contre l'occupation nazie. Les maquisards, regroupés sur ce plateau, ont mené des actions de sabotage contre les forces allemandes. La bataille de Glières a été l'une des premières grandes offensives menées par les résistants, symbolisant leur courage et leur détermination. Cet épisode a renforcé la lutte pour la libération de la France et est aujourd'hui commémoré comme un symbole de la résistance.",
-      "image": "https://de.lac-annecy.com/content/uploads/2021/03/730x420Le_Plateau_des_Glieres-Gilles_Piel-10154-1920px.jpg",
-      "features": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "coordinates": [
-                6.4473,
-                45.9445
-              ],
-              "type": "Point"
-            }
-          }
-        ]
-      }
+      "image": "https://de.lac-annecy.com/content/uploads/2021/03/730x420Le_Plateau_des_Glieres-Gilles_Piel-10154-1920px.jpg"
     },
     {
       "title": "Première ascension du Mont Blanc",
       "date": 1786,
       "type": "other",
+      "coordinates": [45.8326, 6.8651],
       "description": "La première ascension du Mont Blanc par Jacques Balmat et Michel-Gabriel Paccard marque une étape importante dans l'histoire de l'alpinisme. Cette réussite a inspiré une vague d'exploration des montagnes européennes. L'ascension du Mont Blanc, point culminant des Alpes, a également marqué le début du tourisme alpin et a contribué à la renommée internationale de la région de Chamonix. Aujourd'hui, le Mont Blanc est un symbole des défis de l'alpinisme et de la beauté naturelle des Alpes.",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Jacques_Balmat_2.jpg",
-      "features": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "coordinates": [
-                6.8651,
-                45.8326
-              ],
-              "type": "Point"
-            }
-          }
-        ]
-      }
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Jacques_Balmat_2.jpg"
     },
     {
       "title": "Day of the Tiles",
       "date": 1788,
       "type": "battle",
+      "coordinates": [45.18734, 5.73572],
       "description": "The Day of the Tiles was an event that took place in the French town of Grenoble on 7 June 1788. It was one of the first disturbances preceding the French Revolution and is credited by a few historians as its start. ",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Journ%C3%A9e_des_Tuiles_%28Alexandre_Debelle%29%2C_Mus%C3%A9e_de_la_R%C3%A9volution_fran%C3%A7aise_-_Vizille.jpg",
-      "features": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "coordinates": [
-                5.73572,
-                45.18734
-              ],
-              "type": "Point"
-            }
-          }
-        ]
-      }
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Journ%C3%A9e_des_Tuiles_%28Alexandre_Debelle%29%2C_Mus%C3%A9e_de_la_R%C3%A9volution_fran%C3%A7aise_-_Vizille.jpg"
     },
     {
       "title": "Évian Accords",
       "date": 1962,
       "type": "treaty",
+      "coordinates": [46.40073, 6.58914],
       "description": "The Évian Accords were a set of peace treaties signed on 18 March 1962 in Évian-les-Bains, France, by France and the Provisional Government of the Algerian Republic, the government-in-exile of FLN (Front de Libération Nationale), which sought Algeria's independence from France. The Accords ended the 1954–1962 Algerian War with a formal cease-fire proclaimed for 19 March and formalized the status of Algeria as an independent nation and the idea of cooperative exchanges between the two countries.",
-      "image": "https://www.actuailes.fr/kcfinder/upload/images/france%20evian.jpeg",
-      "features": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "coordinates": [
-                6.58914,
-                46.40073
-              ],
-              "type": "Point"
-            }
-          }
-        ]
-      }
+      "image": "https://www.actuailes.fr/kcfinder/upload/images/france%20evian.jpeg"
     },
     {
       "title": "Council of Clermont",
       "date": 1095,
       "type": "other",
+      "coordinates": [45.77503, 3.08578],
       "description": "The Council of Clermont was a mixed synod of ecclesiastics and laymen of the Catholic Church, called by Pope Urban II and held from 17 to 27 November 1095 at Clermont, Auvergne, at the time part of the Duchy of Aquitaine.[1][2] ",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Passages_d%27outremer_Fr5594%2C_fol._19r%2C_Concile_de_Clermont.jpg/450px-Passages_d%27outremer_Fr5594%2C_fol._19r%2C_Concile_de_Clermont.jpg",
-      "features": {
-        "type": "FeatureCollection",
-        "features": [
-          {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {
-              "coordinates": [
-                3.08578,
-                45.77503
-              ],
-              "type": "Point"
-            }
-          }
-        ]
-      }
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Passages_d%27outremer_Fr5594%2C_fol._19r%2C_Concile_de_Clermont.jpg/450px-Passages_d%27outremer_Fr5594%2C_fol._19r%2C_Concile_de_Clermont.jpg"
     }
 ]
