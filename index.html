@@ -132,15 +132,24 @@
 
             function initialize_markers() {
                 for (let i = 0; i < events.length; i++) {
-                    const event = events[i];
-                    
-                    /*var marker = L.marker(event['coordinates'], {
-                        title: event['title'],
-                        icon: get_type_icon(event['type'])
-                    })*/
-                    console.log(event['features']);
-                    var feature = L.geoJSON(event['features']);
 
+                    const event = events[i];
+                    var feature = null;
+
+                    if(event['type'] == 'point') {
+                        feature = L.marker(event['coordinates'], {
+                            title: event['title'],
+                            icon: get_type_icon(event['type'])
+                        })
+                    } else if(event['type'] == 'line') {
+
+                    } else if(event['type'] == 'polygon') {
+                        feature = L.polygon(event['coordinates'], {
+                            title: event['title'],
+                            fillColor: '#3388ff'
+                        })
+                    }
+                    
                     feature.attached_event_id = i;
 
                     feature.on('click', function(e) {
