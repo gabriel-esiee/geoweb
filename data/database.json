@@ -1,29 +1,29 @@
 [
     {
-      "title": "Construction de la basilique Notre-Dame de Fourvière",
+      "title": "Construction of the Notre-Dame de Fourvière basilica",
       "date": 1884,
       "tag": "building",
       "type": "point",
       "coordinates": [ 45.76233478232618, 4.822082798016055 ],
-      "description": "Érigée sur la colline de Fourvière à Lyon, la basilique Notre-Dame de Fourvière est un emblème architectural majeur de la ville. Construite après la guerre franco-prussienne, elle est un symbole de dévotion religieuse et de résistance nationale. Avec son style néo-byzantin, elle surplombe Lyon et attire des milliers de visiteurs chaque année. Elle symbolise également la montée en puissance de l'Église catholique en France à cette époque.",
+      "description": "On Lyon's Fourvière hill, the Basilica of Notre-Dame de Fourvière is one of the city's major architectural landmarks. Built after the Franco-Prussian war, it is a symbol of religious devotion and national resistance. With its neo-Byzantine style, it overlooks Lyon and attracts thousands of visitors every year. It also symbolizes the rise of the Catholic Church in France at the time.",
       "image": "https://www.visitelyon.fr/wp-content/uploads/2020/10/basilique-notre-dame-de-fourviere-4.jpeg"
     },
     {
-      "title": "Plateau de Glières",
+      "title": "Glières plateau",
       "date": 1944,
       "tag": "battle",
       "type": "point",
       "coordinates": [45.9445, 6.4473],
-      "description": "En 1944, le plateau des Glières est devenu un lieu emblématique de la résistance française contre l'occupation nazie. Les maquisards, regroupés sur ce plateau, ont mené des actions de sabotage contre les forces allemandes. La bataille de Glières a été l'une des premières grandes offensives menées par les résistants, symbolisant leur courage et leur détermination. Cet épisode a renforcé la lutte pour la libération de la France et est aujourd'hui commémoré comme un symbole de la résistance.",
+      "description": "In 1944, the Glières plateau became an emblematic site of the French resistance against Nazi occupation. Resistance fighters grouped on the plateau carried out sabotage actions against German forces. The Battle of Glières was one of the Resistance's first major offensives, symbolizing their courage and determination. This episode strengthened the fight for the liberation of France and is commemorated today as a symbol of the Resistance.",
       "image": "https://de.lac-annecy.com/content/uploads/2021/03/730x420Le_Plateau_des_Glieres-Gilles_Piel-10154-1920px.jpg"
     },
     {
-      "title": "Première ascension du Mont Blanc",
+      "title": "First ascent of Mont Blanc",
       "date": 1786,
       "tag": "other",
       "type": "point",
       "coordinates": [45.8326, 6.8651],
-      "description": "La première ascension du Mont Blanc par Jacques Balmat et Michel-Gabriel Paccard marque une étape importante dans l'histoire de l'alpinisme. Cette réussite a inspiré une vague d'exploration des montagnes européennes. L'ascension du Mont Blanc, point culminant des Alpes, a également marqué le début du tourisme alpin et a contribué à la renommée internationale de la région de Chamonix. Aujourd'hui, le Mont Blanc est un symbole des défis de l'alpinisme et de la beauté naturelle des Alpes.",
+      "description": "The first ascent of Mont Blanc by Jacques Balmat and Michel-Gabriel Paccard marked a milestone in the history of mountaineering. This success inspired a wave of exploration of Europe's mountains. The ascent of Mont Blanc, the highest peak in the Alps, also marked the beginning of alpine tourism and contributed to the international renown of the Chamonix region. Today, Mont Blanc is a symbol of the challenges of mountaineering and the natural beauty of the Alps.",
       "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Jacques_Balmat_2.jpg"
     },
     {
@@ -59,16 +59,16 @@
       "tag": "battle",
       "type": "point",
       "coordinates": [ 45.754727518783966, 4.8794254445667775 ],
-      "description": "The Canut revolts (French: Révolte des canuts) is the collective name for the major revolts by Lyonnais silk workers (French: canuts) which occurred in 1831, 1834 and 1848. They were among the first well-defined worker uprisings of the period known as the Industrial Revolution. The First Canut revolt in 1831 was provoked by a bad economy and a resultant drop in silk prices, which caused a drop in workers' wages. In an effort to maintain their standard of living, the workers tried to see a minimum price imposed on silk.",
+      "description": "The Canut revolts is the collective name for the major revolts by Lyonnais silk workers which occurred in 1831 and 1834. They were among the first well-defined worker uprisings of the period known as the Industrial Revolution. The First Canut revolt in 1831 was provoked by a bad economy and a resultant drop in silk prices, which caused a drop in workers' wages. The Second Canut revolt in 1834 occurred in a prosperous economy that had caused a surge in workers' wages.",
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/R%C3%A9volte_de_canuts_%C3%A0_Lyon_en_1834.jpg/1280px-R%C3%A9volte_de_canuts_%C3%A0_Lyon_en_1834.jpg"
     },
     {
-      "title": "The Lumière brothers invent cinema",
+      "title": "The Lumière brothers invent filmmaking",
       "date": 1895,
       "tag": "other",
       "type": "point",
       "coordinates": [ 45.741208343367475, 4.833636842794306 ],
-      "description": "The Lumière brothers, Auguste Marie Louis Nicolas Lumière (19 October 1862 – 10 April 1954) and Louis Jean Lumière (5 October 1864 – 6 June 1948),[1][2] were French manufacturers of photography equipment, best known for their Cinématographe motion picture system and the short films they produced between 1895 and 1905, which places them among the earliest filmmakers. Their screening of a single film on 22 March 1895 for around 200 members of the Société d'encouragement pour l'industrie nationale (Society for the Development of the National Industry) in Paris was probably the first presentation of projected film. Their first commercial public screening on 28 December 1895 for around 40 paying visitors and invited relations has traditionally been regarded as the birth of cinema. Either the techniques or the business models of earlier filmmakers proved to be less viable than the breakthrough presentations of the Lumières.",
+      "description": "The Lumière brothers, Auguste Lumière and Louis Jean Lumière, were French manufacturers of photography equipment, best known for their Cinématographe motion picture system and the short films they produced between 1895 and 1905, which places them among the earliest filmmakers.",
       "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Fratelli_Lumiere.jpg"
     },
     {
@@ -77,7 +77,7 @@
       "tag": "other",
       "type": "point",
       "coordinates": [ 45.673958334510814, 6.391713161498984 ],
-      "description": "The 1992 Winter Olympics, officially known as the XVI Olympic Winter Games (French: XVIes Jeux Olympiques d'hiver) and commonly known as Albertville '92 (Arpitan: Arbèrtvile '92), were a winter multi-sport event held from 8 to 23 February 1992 in and around Albertville, France. Albertville won the bid to host the Winter Olympics in 1986, beating Sofia, Falun, Lillehammer, Cortina d'Ampezzo, Anchorage, and Berchtesgaden. The 1992 Winter Olympics were the last winter games held in the same year as the Summer Olympics.[2][3] The Games were the fifth Olympic Games held in France and the country's third Winter Olympics, after the 1924 Winter Games in Chamonix and the 1968 Winter Games in Grenoble. This games was the first of two consecutive Olympic games to be held in Western Europe, preceding the 1992 Summer Olympics in Barcelona, Spain.",
+      "description": "The 1992 Winter Olympics, officially known as the XVI Olympic Winter Games, were a winter multi-sport event held from 8 to 23 February 1992 in and around Albertville. Albertville won the bid to host the Winter Olympics in 1986, beating Sofia, Falun, Lillehammer, Cortina d'Ampezzo, Anchorage, and Berchtesgaden. This games was the first of two consecutive Olympic games to be held in Western Europe, preceding the 1992 Summer Olympics in Barcelona, Spain.",
       "image": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/1992_Winter_Olympics_logo.svg/1024px-1992_Winter_Olympics_logo.svg.png"
     },
     {
@@ -122,7 +122,7 @@
         [46.02135586512571, 5.852006016219889],
         [46.14023093965298, 6.023225127496602]
       ],
-      "description": "Après la défaite de la France en juin 1940, les Allemands, vainqueurs, ont occupé militairement la partie nord de la France puis, à partir de novembre 1942, la totalité du territoire français.",
-      "image": "https://cache.larvf.com/data/photo/w1000_ci/6j/les-grands-vins-franc-ais-fascinent-l-occupant-allemand-pour-preuve-ces-officiers-de-la-wehrmach.jpg"
+      "description": "Following France's defeat in June 1940, the Germans occupied the northern part of France militarily, and then, from November 1942, the whole of France. While the Vichy government was nominally in charge of all of France, the military administration in the occupied zone was a de facto Nazi dictatorship, where the actual sovereignty of the French government was seriously limited.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/Bundesarchiv_Bild_101I-751-0067-34%2C_Paris%2C_Parade_deutscher_Soldaten.jpg"
     }
 ]

@@ -3,12 +3,12 @@
 	<head>
 		<title>Semestral project</title>
 
-        <script type="text/javascript" src="scripts/leaflet.js"></script>
-        <script type="text/javascript" src='scripts/leaflet.mask.js'></script>
-
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap">
-		<link rel="stylesheet" href="style/leaflet.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
         <link rel="stylesheet" href="style/style.css">
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script type="text/javascript" src='scripts/leaflet.mask.js'></script>
 	</head>
 	<body>
         <div id="map"></div>
@@ -33,7 +33,7 @@
                 <h2 class="date-title">Filter event by date (<span id="min-date-text"></span>-<span id="max-date-text"></span>)</h2>
                 <h2 class="type-title">Filter event by type (<span id="tag-text"></span>)</h2>
                 <div class="date-range">
-                    <input id="slider_one" type="range" value="1800" min="1000" max="2024"/>
+                    <input id="slider_one" type="range" value="1890" min="1000" max="2024"/>
                     <input id="slider_two" type="range" value="2000" min="1000" max="2024"/>
                 </div>
                 <div class="type-selection">
